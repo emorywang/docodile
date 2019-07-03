@@ -156,7 +156,7 @@ class GenerateCommand extends \Symfony\Component\Console\Command\Command {
         $twig->addFunction($f);
 
         $f = new \Twig_SimpleFunction("prettify", function ($data) {
-            $pretty = json_encode(json_decode($data), JSON_PRETTY_PRINT);
+            $pretty = json_encode(json_decode($data), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             if ($pretty && $pretty !=='null') {
                 return $pretty;
             } else {
